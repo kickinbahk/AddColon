@@ -21,16 +21,49 @@ class AddColonsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testWhenGivenStringItReturnsString() {
+        let stringMutator = StringMutator()
+        let lettersString = "A"
+        
+        XCTAssertEqual(stringMutator.parseString(str: lettersString), lettersString, "When given string, it is returned")
+    }
+
+    func testInsertColonAfter2Chars() {
+        let stringMutator = StringMutator()
+        let passed = "AAB"
+        let expected = "AA:B"
+        
+        XCTAssertEqual(stringMutator.parseString(str: passed), expected, "Tests that colon is inserted after 2 characters when passing in string")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testIfGivenLongerOddStringColonIsInsertedAfterEvery2Characters() {
+        let stringMutator = StringMutator()
+        let passed = "AABBCCD"
+        let expected = "AA:BB:CC:D"
+        
+        XCTAssertEqual(stringMutator.parseString(str: passed), expected, "If given long odd string, colon is inserted after every 2 characters")
+    }
+    
+    func testStringDoesNotEndWithColon() {
+        let stringMutator = StringMutator()
+        let passed = "AA"
+        let expected = "AA"
+        
+        XCTAssertEqual(stringMutator.parseString(str: passed), expected, "Tests string does not end with colon")
+    }
+    
+    func testIfGivenLongerEvenStringColonIsNotInsertedAtEnd() {
+        let stringMutator = StringMutator()
+        let passed = "AABBCCDD"
+        let expected = "AA:BB:CC:DD"
+        
+        XCTAssertEqual(stringMutator.parseString(str: passed), expected, "If given long even string, does not end with colon")
     }
     
 }
+
+
+
+
+
+
