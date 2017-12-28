@@ -15,10 +15,9 @@ class StringMutator {
     
     func parseString(str: String) -> String {
         var addColon = [String]()
-        var counter = 1 // Allows us to check which character in the string we are on
+        var counter = 1
         
         addColon = str.map { character -> String in
-            
             if counter % 2 == 0 {
                 if counter == str.count {
                     return "\(character)"
