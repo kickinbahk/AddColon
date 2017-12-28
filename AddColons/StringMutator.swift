@@ -12,26 +12,22 @@ class StringMutator {
     
     // If a string is given, insert a colon after every 2 characters
     // String shouldn't end with a colon
-    // gihub.com/kickinbahk
     
     func parseString(str: String) -> String {
         var addColon = [String]()
+        var counter = 1 // Allows us to check which character in the string we are on
         
-        var counter = 1
-        for char in str {
+        addColon = str.map { character -> String in
             
             if counter % 2 == 0 {
-                addColon.append("\(char)")
-                
                 if counter == str.count {
-                    break
+                    return "\(character)"
                 }
-                
-                addColon.append(":")
                 counter += 1
+                return "\(character):"
             } else {
-                addColon.append("\(char)")
                 counter += 1
+                return "\(character)"
             }
         }
         
